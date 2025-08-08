@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --primary: #6c63ff;
+    --primary-hover: #554ce2;
+    --background: #f4f4fb;
+    --text-color: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin-bottom: 15px;
+    resize: none;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background: var(--primary-hover);
+    transform: scale(1.03);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#lista-mensagens {
+    text-align: left;
+}
+
+.mensagem {
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+}
