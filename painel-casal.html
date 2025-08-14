@@ -1,0 +1,58 @@
+<!-- painel-casal.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Painel — Noivo & Noiva</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="logo">🔒</div>
+      <div>
+        <h2>Painel do Casal</h2>
+        <div class="date">Área protegida</div>
+      </div>
+    </div>
+    <div class="cta">
+      <a href="index.html" class="btn btn-muted">Voltar ao público</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- login -->
+    <div id="auth-area">
+      <div class="card" style="max-width:520px;margin:auto">
+        <h3 style="margin-top:0">Entrar</h3>
+        <input id="email" placeholder="Email" class="search" />
+        <input id="password" placeholder="Senha" type="password" class="search" style="margin-top:8px" />
+        <div style="margin-top:10px;display:flex;gap:10px;align-items:center;">
+          <button id="loginBtn" class="btn btn-primary">Entrar</button>
+          <button id="logoutBtn" class="btn btn-muted" style="display:none">Sair</button>
+          <span id="authStatus" style="color:var(--muted)"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- painel -->
+    <div id="panel" style="display:none">
+      <div class="painel-top">
+        <h3>Mensagens recebidas</h3>
+        <input id="searchInput" placeholder="Filtrar por texto..." class="search" />
+      </div>
+
+      <div id="lista" class="list" style="margin-top:12px"></div>
+    </div>
+  </main>
+
+  <script type="module" src="painel.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

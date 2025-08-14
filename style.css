@@ -1,85 +1,298 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Great+Vibes&display=swap');
 
 :root {
-    --primary: #6c63ff;
-    --primary-hover: #554ce2;
-    --background: #f4f4fb;
-    --text-color: #333;
+  --bg: #f9f3e9;
+  --card: #d57e3d;
+  --accent: #4a7c2a; 
+  --text-dark: #2c2c2c;
+  --white: #ffffff;
+  --border: #e0e0e0;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--background);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 16px;
 }
 
+
+.header {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+
+@media(max-width: 600px) {
+  .header {
+    margin-bottom: 30px; 
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--card), #b65a2e);
+  font-size: 22px;
+  color: var(--white);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.header h2 {
+  margin: 0;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+}
+
+.header .date {
+  color: var(--text-dark);
+  font-size: 0.9rem;
+}
+
+/* layout container */
 .container {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    max-width: 500px;
-    width: 90%;
-    text-align: center;
+  width: 100%;
+  max-width: 820px;
+  background: white;
+  border-radius: 18px;
+  padding: 34px;
+  margin-top: 110px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
 }
 
-h1 {
-    color: var(--primary);
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+/* hero */
+.hero {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.left {
+  flex: 1 1 360px;
+}
+
+.title {
+  color: var(--card);
+  font-size: 2.2rem;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--text-dark);
+  margin: 0 0 18px 0;
+}
+
+/* form card */
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.01));
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid var(--border);
 }
 
 textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-    margin-bottom: 15px;
-    resize: none;
-    transition: border-color 0.3s;
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dark);
+  resize: vertical;
+  font-size: 15px;
 }
 
-textarea:focus {
-    border-color: var(--primary);
-    outline: none;
+.file-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
 }
 
-button {
-    background: var(--primary);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.1s;
+input[type=file] {
+  color: var(--text-dark);
+  background: transparent;
 }
 
-button:hover {
-    background: var(--primary-hover);
-    transform: scale(1.03);
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  align-items: center;
 }
 
-button:active {
-    transform: scale(0.98);
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 0;
+  transition: background 0.3s, transform 0.2s;
+  min-width: 120px; 
 }
 
-#lista-mensagens {
-    text-align: left;
+.btn-primary {
+  background: linear-gradient(90deg, var(--card), #b65a2e);
+  color: var(--white);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
-.mensagem {
-    background: #f9f9f9;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    border-left: 4px solid var(--primary);
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-muted {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--border);
+}
+
+/* right side preview card */
+.preview {
+  width: 320px;
+  max-width: 40%;
+  min-width: 260px;
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.preview h4 {
+  margin: 0 0 8px 0;
+  color: var(--accent);
+}
+
+.preview p {
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+/* mensagens list (painel) */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+}
+
+/* painel casal header */
+.painel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.search {
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  color: var(--text-dark);
+}
+
+/* botão área do casal */
+.btn-area-casal {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+}
+
+/* responsive */
+@media(max-width: 880px) {
+  .hero {
+    flex-direction: column;
+  }
+  .preview {
+    max-width: 100%;
+  }
+}
+
+@media(max-width: 600px) {
+  .header {
+    margin-bottom: 30px; 
+  }
+
+  .container {
+    padding: 20px; 
+    margin-top: 80px; 
+  }
+
+  .hero {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .preview {
+    width: 100%; 
+    max-width: none; 
+  }
+
+  .btn {
+    width: 100%; 
+    min-width: auto; 
+  }
+
+  .title {
+    font-size: 1.8rem; 
+  }
+
+  .subtitle {
+    font-size: 1rem; 
+  }
+
+  .search {
+    width: 100%; 
+  }
 }

@@ -1,19 +1,57 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cápsula do Tempo</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cápsula do Tempo</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>💌 Deixe sua Mensagem</h1>
-        <p>Escreva um recado especial para ser guardado na nossa cápsula do tempo.</p>
-        <textarea id="mensagem" placeholder="Digite sua mensagem aqui..." rows="5"></textarea>
-        <button id="enviar">Enviar Mensagem</button>
+  <header class="header">
+    <div class="brand">
+      <div class="logo">💍</div>
+      <div>
+        <h2>Noivo & Noiva</h2>
+        <div class="date">16 de Agosto de 2025</div>
+      </div>
     </div>
+    <div class="cta">
+      <a href="painel-casal.html" class="btn btn-muted">Área do casal</a>
+    </div>
+  </header>
 
-    <script type="module" src="script.js"></script>
+  <main class="container">
+    <section class="hero">
+      <div class="left">
+        <h1 class="title">Deixe um recado especial</h1>
+        <p class="subtitle">Grave um vídeo curto ou escreva um texto para a cápsula do tempo. Só o casal poderá ver suas mensagens depois.</p>
+
+        <div class="card">
+          <label for="mensagem"><strong>Mensagem (opcional)</strong></label>
+          <textarea id="mensagem" placeholder="Escreva algo carinhoso..."></textarea>
+
+          <div class="file-row">
+            <label for="videoFile"><strong>Enviar vídeo (opcional)</strong></label>
+            <input id="videoFile" type="file" accept="video/*" />
+          </div>
+
+          <div class="actions">
+            <button id="enviar" class="btn btn-primary">Enviar</button>
+            <button id="limpar" class="btn btn-muted">Limpar</button>
+            <span id="status" style="color:lightgrey;font-size:0.9rem"></span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="preview card">
+        <h4>Como funciona</h4>
+        <p>Seu recado será guardado com segurança. Apenas os noivos terão acesso à uma área protegida para assistir depois.</p>
+        <p style="margin-top:12px;color:var(--muted);font-size:13px">Dica: mantenha o vídeo com até 2 minutos para upload mais rápido.</p>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>

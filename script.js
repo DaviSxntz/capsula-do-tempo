@@ -1,35 +1,68 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+// script.js sem Firebase
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDqTe0cO2fimSZXsb1H3jdrJ8Q6X7TQz_0",
-  authDomain: "capsula-do-tempo-5c783.firebaseapp.com",
-  projectId: "capsula-do-tempo-5c783",
-  storageBucket: "capsula-do-tempo-5c783.firebasestorage.app",
-  messagingSenderId: "660459572598",
-  appId: "1:660459572598:web:74e55511f7295a1bf27e57",
-  measurementId: "G-ESC3WMG3DD"
-};
+const elMsg = document.getElementById("mensagem");
+const elFile = document.getElementById("videoFile");
+const btnEnviar = document.getElementById("enviar");
+const btnLimpar = document.getElementById("limpar");
+const statusEl = document.getElementById("status");
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// Array para armazenar mensagens localmente
+const mensagensLocais = [];
 
-async function carregarMensagens() {
-    const lista = document.getElementById("lista-mensagens");
-    lista.innerHTML = "<p>Carregando...</p>";
+btnLimpar.addEventListener("click", () => {
+  elMsg.value = "";
+  elFile.value = "";
+  statusEl.textContent = "";
+});
 
-    const q = query(collection(db, "mensagens"), orderBy("data", "desc"));
-    const docsSnap = await getDocs(q);
+btnEnviar.addEventListener("click", async () => {
+  const texto = elMsg.value.trim();
+  const file = elFile.files[0];
 
-    lista.innerHTML = "";
-    docsSnap.forEach(doc => {
-        const data = doc.data();
-        lista.innerHTML += `
-            <div class="mensagem">
-                <strong>${new Date(data.data).toLocaleString()}:</strong> ${data.texto}
-            </div>
-        `;
-    });
-}
+  if (!texto && !file) {
+    alert("Digite uma mensagem ou envie um vídeo.");
+    return;
+  }
 
-carregarMensagens();
+  try {
+    statusEl.textContent = "Enviando…";
+    btnEnviar.disabled = true;
+
+    let videoURL = "";
+    if (file) {
+      // Cria uma URL temporária para o vídeo
+      videoURL = URL.createObjectURL(file);
+
+      // Salva mensagem localmente
+      mensagensLocais.push({
+        texto: texto || "",
+        video: videoURL,
+        createdAt: new Date()
+      });
+
+      statusEl.textContent = "Enviado com sucesso! Obrigado 💌";
+      btnEnviar.disabled = false;
+      elMsg.value = "";
+      elFile.value = "";
+    } else {
+      // Só texto
+      mensagensLocais.push({
+        texto: texto,
+        video: "",
+        createdAt: new Date()
+      });
+      statusEl.textContent = "Mensagem enviada! Obrigado 💌";
+      btnEnviar.disabled = false;
+      elMsg.value = "";
+    }
+
+    // Opcional: exibir mensagens no console
+    console.log("Mensagens locais:", mensagensLocais);
+
+  } catch (err) {
+    console.error(err);
+    alert("Erro ao enviar. Tente novamente.");
+    btnEnviar.disabled = false;
+    statusEl.textContent = "";
+  }
+});
